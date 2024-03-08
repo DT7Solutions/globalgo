@@ -1961,6 +1961,7 @@ span.users {
     margin-bottom: 30px;
     border: 1px solid #f4f4f4;
     padding: 30px 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
 }
 .single-member .team-img {
     display: inline-block;

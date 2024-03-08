@@ -44,7 +44,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=100, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
     profile_image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
-    firebase_id = models.TextField(blank=True, null=True)
+    referal_code  = models.CharField(max_length=100,blank=True, null=True)
     pincode = models.IntegerField(blank=True, null=True)
     address = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -62,7 +62,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     # Custom user manager
     objects = UserManager()
 
-    roles = models.ManyToManyField(Role)
+    role = models.ForeignKey('Role', models.DO_NOTHING, default=None, null=False,blank=False,db_column='role_id')
 
     def __str__(self):
         return self.username
@@ -74,12 +74,12 @@ class Users(AbstractBaseUser, PermissionsMixin):
         return True
 
 
-class UserRole(models.Model):
-    role = models.ForeignKey('Role', models.DO_NOTHING, null=False,blank=False,db_column='role_id')
-    user = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,db_column='user_id')
-    created_by = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,related_name='created_user',db_column='created_by')
-    created_at = models.DateTimeField(auto_now_add=True)
+# class UserRole(models.Model):
+#     role = models.ForeignKey('Role', models.DO_NOTHING, null=False,blank=False,db_column='role_id')
+#     user = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,db_column='user_id')
+#     created_by = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,related_name='created_user',db_column='created_by')
+#     created_at = models.DateTimeField(auto_now_add=True)
     
-    class Meta:
-        managed = True
-        db_table = 'user_role'
+#     class Meta:
+#         managed = True
+#         db_table = 'user_role'
