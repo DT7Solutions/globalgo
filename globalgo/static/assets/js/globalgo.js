@@ -1,85 +1,86 @@
 
-function creatuser(){
-    const username = $("#username").val()
-    const phone = $("#phonenumber").val()
-    const emailId = $("#email").val()
-    const password = $("#password").val()
-    const confirm_password = $("#confirm_password").val()
+
+// function creatuser(){
+//     const username = $("#username").val()
+//     const phone = $("#phonenumber").val()
+//     const emailId = $("#email").val()
+//     const password = $("#password").val()
+//     const confirm_password = $("#confirm_password").val()
     
-    var formData = new FormData()
-    formData.append('username', username)
-    formData.append('phone', phone)
-    formData.append('emailId', emailId)
-    formData.append('password', password)
-    formData.append('confirm_password', confirm_password)
+//     var formData = new FormData()
+//     formData.append('username', username)
+//     formData.append('phone', phone)
+//     formData.append('emailId', emailId)
+//     formData.append('password', password)
+//     formData.append('confirm_password', confirm_password)
 
-    $.ajax({
-        url: '/user_register/',
-        method: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(response){
-            show_success(response['message'])
-            reset()
-        },
-        error: function(response){
-            show_error(response.responseJSON['message'])
-        }
+//     $.ajax({
+//         url: '/user_register/',
+//         method: 'POST',
+//         data: formData,
+//         processData: false,
+//         contentType: false,
+//         success: function(response){
+//             show_success(response['message'])
+//             reset()
+//         },
+//         error: function(response){
+//             show_error(response.responseJSON['message'])
+//         }
         
-    })
-}
+//     })
+// }
 
 
-function reset(){
-    $("#Username").val('')
-    $("#email").val('')
-    $("#password").val('')
-    $("#confirm_password").val('')
-    $("#phone").val('')
-}
+// function reset(){
+//     $("#Username").val('')
+//     $("#email").val('')
+//     $("#password").val('')
+//     $("#confirm_password").val('')
+//     $("#phone").val('')
+// }
 
 
 
-function creatstaff(){
-    const username = $("#username").val()
-    const phone = $("#phonenumber").val()
-    const emailId = $("#email").val()
-    const password = $("#password").val()
-    const confirm_password = $("#confirm_password").val()
+// function creatstaff(){
+//     const username = $("#username").val()
+//     const phone = $("#phonenumber").val()
+//     const emailId = $("#email").val()
+//     const password = $("#password").val()
+//     const confirm_password = $("#confirm_password").val()
     
-    var formData = new FormData()
-    formData.append('username', username)
-    formData.append('phone', phone)
-    formData.append('emailId', emailId)
-    formData.append('password', password)
-    formData.append('confirm_password', confirm_password)
+//     var formData = new FormData()
+//     formData.append('username', username)
+//     formData.append('phone', phone)
+//     formData.append('emailId', emailId)
+//     formData.append('password', password)
+//     formData.append('confirm_password', confirm_password)
 
-    $.ajax({
-        url: '/staff_register/',
-        method: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(response){
-            show_success(response['message'])
-            reset()
-        },
-        error: function(response){
-            show_error(response.responseJSON['message'])
-        }
+//     $.ajax({
+//         url: '/staff_register/',
+//         method: 'POST',
+//         data: formData,
+//         processData: false,
+//         contentType: false,
+//         success: function(response){
+//             show_success(response['message'])
+//             reset()
+//         },
+//         error: function(response){
+//             show_error(response.responseJSON['message'])
+//         }
         
-    })
-}
+//     })
+// }
 
 
-function reset(){
-    $("#Username").val('')
-    $("#email").val('')
-    $("#password").val('')
-    $("#confirm_password").val('')
-    $("#phone").val('')
-}
+// function reset(){
+//     $("#Username").val('')
+//     $("#email").val('')
+//     $("#password").val('')
+//     $("#confirm_password").val('')
+//     $("#phone").val('')
+// }
 
 
 

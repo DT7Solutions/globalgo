@@ -188,3 +188,38 @@ windows.on('scroll', function() {
     
 
 })(jQuery); 
+
+// $(document).ready(function() {
+//     $.ajax({
+//         type: 'GET',
+//         url: '/check_authentication/',
+//         success: function(response) {
+//             let nali_code = '<li>' +
+//                                 '<a class="pages" href="/"> ' +
+//                                     '<i class="fa fa-user">&nbsp;</i>';
+                                    
+//             if (response.is_authenticated) {
+//                 nali_code += response.username;
+//             } else {
+//                 nali_code += 'Login';
+//             }
+
+//             nali_code += '</a>';
+
+//             if (response.is_authenticated) {
+//                 nali_code += '<ul class="sub-menu">' +
+//                                 '<li class="text-left"><a href="index-2.html">Profile</a></li>' +
+//                                 '<li class="text-left"><a href="index-3.html">Change Password</a></li>' +
+//                                 '<li class="text-left"><a href="index-2.html">LogOut</a></li>' +
+//                              '</ul>';
+//             }
+
+//             nali_code += '</li>';
+
+//             $("#user_auth").append(nali_code);
+//         },
+//         error: function(xhr, status, error) {
+//             console.error('Error checking authentication:', error);
+//         }
+//     });
+// });
