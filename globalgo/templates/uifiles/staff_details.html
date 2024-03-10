@@ -1,0 +1,55 @@
+{% extends 'uifiles/base.html' %}
+{% load static %}
+{% block content %}
+        <!-- Start breadcumb Area -->
+        <div class="page-area">
+            <div class="breadcumb-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcrumb text-center">
+                            <div class="section-headline white-headline">
+                                <h3>view Staff details </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End breadcumb Area -->
+        <div class="feature-area bg-color fix area-padding">
+            <div class="container">
+                {% for item in staff %}
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="feature-content">
+                            <div class="feature-images">
+                                <img src="{{ item.profile_image.url }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="feature-text">
+                            <div class="d-flex">
+                                <div class="staf_details">
+                                        <p>Name          <span>:</span>{{ item.first_name }}{{ item.last_name }}</p>
+                                        <p>Email  <span>:</span> {{ item.email}}</p>
+                                        <p>Phone          <span>:</span>{{ item.phone }}</p>
+                                        <p>Date of_Birth <span>:</span> {{ item.date_of_birth }}</p>
+                                        <p>ReferalCode  <span>:</span> {{ item.referal_code}}</p>
+                                        <p>Pincode          <span>:</span>{{ item.pincode }}</p>
+                                        <p>User Address  <span>:</span> {{ item.address }}</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+                
+                
+       
+
+{% endblock %}
