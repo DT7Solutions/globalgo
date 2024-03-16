@@ -1,0 +1,55 @@
+{% extends 'uifiles/base.html' %}
+{% load static %}
+{% block content %}
+        <!-- Start breadcumb Area -->
+        <div class="page-area">
+            <div class="breadcumb-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcrumb text-center">
+                            <div class="section-headline white-headline">
+                                <h3>Student view</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End breadcumb Area -->
+        <div class="blog-area fix bg-color page-padding">
+            <div class="container">
+                <div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="section-headline text-center">
+                            <h3>Global investment plan news</h3>
+							<p>Dummy text is also used to demonstrate the appearance of different typefaces and layouts</p>
+						</div>
+					</div>
+				</div>
+                <div class="row">
+                    <div class="blog-grid home-blog">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="single-blog">
+                               <div class="blog-image">
+									<a class="image-scale" href="#">
+										<img src="{% static 'assets/img/maps/usa.png' %}" alt="">
+									</a>
+								</div>
+                                <div class="blog-content">
+                                    <h4>USA</h4>
+                                    <div class="price-btn blue">
+                                        <a class="blue" href="/usa_services/">View More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End row -->
+            </div>
+        </div>
+                
+       
+
+{% endblock %}

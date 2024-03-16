@@ -36,6 +36,7 @@
 		<!-- responsive css -->
 		<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
         <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css" />
+   
 
 
 		<!-- modernizr css -->
@@ -115,7 +116,7 @@
                                                             </a>
                                                             {% if request.user.is_authenticated %}
                                                             <ul class="sub-menu">
-                                                                <li class="text-left"><a href="index-2.html">Profile</a></li>
+                                                                <li class="text-left"><a href="/profile_view/{{request.user.id}}/">Profile</a></li>
                                                                 <li class="text-left"><a href="/otp_verification_mail/">Change Password</a></li>
                                                                 <li class="text-left"><a href="/logout/">LogOut</a></li>
                                                             </ul>

@@ -19,12 +19,12 @@
         <!-- End breadcumb Area -->
         <div class="feature-area bg-color fix area-padding">
             <div class="container">
-                {% for item in staff %}
+              
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="feature-content">
                             <div class="feature-images">
-                                <img src="{{ item.profile_image.url }}" alt="">
+                                <img src="{{ user.profile_image.url }}" alt="Profile Image">
                             </div>
                         </div>
                     </div>
@@ -32,20 +32,20 @@
                         <div class="feature-text">
                             <div class="d-flex">
                                 <div class="staf_details">
-                                        <p>Name          <span>:</span>{{ item.first_name }}{{ item.last_name }}</p>
-                                        <p>Email  <span>:</span> {{ item.email}}</p>
-                                        <p>Phone          <span>:</span>{{ item.phone }}</p>
-                                        <p>Date of_Birth <span>:</span> {{ item.date_of_birth }}</p>
-                                        <p>ReferalCode  <span>:</span> {{ item.referal_code}}</p>
-                                        <p>Pincode          <span>:</span>{{ item.pincode }}</p>
-                                        <p>User Address  <span>:</span> {{ item.address }}</p>
+                                        <p>Name          <span>:</span>{{ user.first_name|default:'' }}{{ user.last_name|default:'' }}</p>
+                                        <p>Email  <span>:</span> {{ user.email|default:''}}</p>
+                                        <p>Phone          <span>:</span>{{ user.phone|default:'' }}</p>
+                                        <p>Date of_Birth <span>:</span> {{ user.date_of_birth|default:'' }}</p>
+                                        <p>ReferalCode  <span>:</span> {{ user.referal_code|default:''}}</p>
+                                        <p>Pincode          <span>:</span>{{ user.pincode|default:'' }}</p>
+                                        <p>User Address  <span>:</span> {{ user.address|default:'' }}</p>
                                 </div>
                                 
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+               
             </div>
         </div>
                 

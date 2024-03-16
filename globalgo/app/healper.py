@@ -2,7 +2,25 @@ from django.conf import settings
 from django.http.response import JsonResponse
 from django.core.mail import send_mail
 from datetime import datetime,timedelta
+from django.core.mail import EmailMultiAlternatives
+from cryptography.fernet import Fernet
+from typing import List
 import pyotp 
+import json
+from django.core import signing
+
+
+
+def encrypt_user_id(user_id):
+    encrypted_data  = signing.dumps(user_id)
+    print(encrypted_data)
+    return encrypted_data 
+
+def decrypt_user_id(encrypted_user_id):
+    decrypted_data = signing.loads(encrypted_user_id)
+    return decrypted_data
+   
+
 
 
 def generate_email_message(otp,name):
@@ -33,22 +51,24 @@ def send_otp_email_notification(request,name,emailid):
     send_otp_email(subject,body,sender_email=sender_emailid,receipt_email=emailid)
     return valid_date 
 
-# class Attachments:
-#     filename: str = None
-#     file: str = None
-#     mime_type: str = None
+class Attachments:
+    filename: str = None
+    file: str = None
+    mime_type: str = None
     
-#     def __init__(self,filename=None,file=None,mime_type='application/pdf'):
-#         self.filename = str(filename).replace(".","_")
-#         self.file = file
-#         self.mime_type = mime_type
+    def __init__(self,filename=None,file=None,mime_type='application/pdf'):
+        self.filename = str(filename).replace(".","_")
+        self.file = file
+        self.mime_type = mime_type
         
-# def send_smtp_mail(SUBJECT,BODY,HTML_DATA=None,RECIPIENT=[],CC_EMAILS=[],attachments: List[Attachments] = []):
-#     try:
-#         email = EmailMultiAlternatives(subject=SUBJECT,body=BODY,to=RECIPIENT,cc=CC_EMAILS)
-#         email.attach_alternative(content=HTML_DATA,mimetype='text/html')
-#         for attach in attachments:
-#             email.attach(filename=attach.filename,content=attach.file,mimetype=attach.mime_type)
-#         email.send()
-#     except Exception as e:
-#         pass
+def send_smtp_mail(SUBJECT,BODY,HTML_DATA=None,RECIPIENT=[],CC_EMAILS=[],attachments: List[Attachments] = []):
+    try:
+        email = EmailMultiAlternatives(subject=SUBJECT,body=BODY,to=RECIPIENT,cc=CC_EMAILS)
+        email.attach_alternative(content=HTML_DATA,mimetype='text/html')
+        for attach in attachments:
+            email.attach(filename=attach.filename,content=attach.file,mimetype=attach.mime_type)
+        email.send()
+    except Exception as e:
+        pass
+
+

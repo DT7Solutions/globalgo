@@ -1,12 +1,16 @@
 from datetime import datetime
+from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.hashers import check_password
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
+from .healper import decrypt_user_id
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from cryptography.fernet import Fernet
 import pyotp 
 
 
@@ -35,10 +39,10 @@ def login_logic(request):
                     
                     elif user.role.name == "staff":
                         print("staff")
-                        return JsonResponse({'message': 'User staff successfully.'})
+                        return JsonResponse({'redirect_url': '/staff_view/'})
                     else:
                         print("student")
-                        return JsonResponse({'message': 'User student successfully.'})
+                        return JsonResponse({'redirect_url': '/student_view/'})
             else:
                 msg = 'Invalid credentials'
         
@@ -76,6 +80,7 @@ def UserRegister(request):
             new_user.email=user_email
             new_user.password=make_password(password)
             new_user.phone = phone
+            new_user.profile_image = 'profile_images/default_profile.png'
             new_user.created_at = datetime.now()
             new_user.is_active = True
             new_user.is_staff = True
@@ -84,7 +89,6 @@ def UserRegister(request):
             new_user.save()
         
             
-
             return JsonResponse({'message': 'User registered successfully.'})
         except KeyError:
             return JsonResponse({'message': 'Invalid request parameters.'}, status=400)
@@ -118,6 +122,7 @@ def staffRegister(request):
             new_user.email=user_email
             new_user.password=make_password(password)
             new_user.phone = phone
+            new_user.profile_image = 'profile_images/default_profile.png'
             new_user.created_at = datetime.now()
             new_user.is_active = True
             new_user.is_staff = True
@@ -165,3 +170,54 @@ def verify_otp(request):
         return JsonResponse({'message': 'Invalid request parameters.'}, status=400)
     except Exception as e:
         return JsonResponse({'message': str(e)}, status=500)
+    
+
+@login_required
+@csrf_exempt
+def change_user_password(request):
+    if request.method == 'POST':
+        try:
+            old_password = request.POST.get("oldPassword")
+            new_password = request.POST.get("newPassword")
+            confirm_password = request.POST.get("confirmPassword")
+
+            user = request.user
+            if user.check_password(old_password):
+                if new_password == confirm_password:
+                    user.set_password(new_password)
+                    user.save()
+                    return JsonResponse({'message': 'Password updated successfully.'})
+                else:
+                    return JsonResponse({'message': 'New password and confirm password do not match.'}, status=400)
+            else:
+                
+                return JsonResponse({'message': 'Incorrect old password.'}, status=400)
+
+        except KeyError:
+            return JsonResponse({'message': 'Invalid request parameters.'}, status=400)
+        except Exception as e:
+            return JsonResponse({'message': str(e)}, status=500)
+        
+
+@csrf_exempt
+def password_reset(request):
+    if request.method == 'POST':
+        try:
+            new_password = request.POST.get("newPassword")
+            confirm_password = request.POST.get("confirmPassword")
+            token_code = request.session.get('secret_token')
+            token_key = request.session.get('secret_key')
+            
+            user_id = decrypt_user_id(token_code)
+        
+            user = Users.objects.filter(id=user_id).first()
+            if user and new_password == confirm_password:
+                user.set_password(new_password)
+                user.save()
+                return JsonResponse({'message': 'Password updated successfully.'})
+            else:
+                return JsonResponse({'message': 'New password and confirm password do not match or user not found.'}, status=400)
+        except Exception as e:
+            return JsonResponse({'message': 'An error occurred: {}'.format(str(e))}, status=500)
+    else:
+        return JsonResponse({'message': 'Only POST requests are allowed.'}, status=405)
