@@ -77,6 +77,52 @@ function creatstaff(){
 }
 
 
+function updateProfile(){
+    const userid = $("#user_id").val();
+    const firstname = $("#first_name").val();
+    const lastname = $("#last_name").val();
+    const referal_code = $("#referal_code").val();
+    const dateofbirth = $("#date_of_birth").val();
+    const address = $("#address").val();
+    const pincode = $("#pincode").val();
+    const image = $("#profile_image")[0].files[0];
+    const username = $("#username").val();
+    const phone = $("#phone").val();
+    const emailId = $("#email").val();
+
+    var formData = new FormData();
+    formData.append('userid', userid);
+    formData.append('username', username);
+    formData.append('phone', phone);
+    formData.append('emailId', emailId);
+    formData.append('firstname', firstname);
+    formData.append('lastname', lastname);
+    formData.append('referal_code', referal_code);
+    formData.append('dateofbirth', dateofbirth);
+    formData.append('address', address);
+    formData.append('pincode', pincode);
+    formData.append('image', image);
+   
+   
+
+    $.ajax({
+        url: '/updateprofile/',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response){
+            show_success(response['message'])
+            // reset()
+        },
+        error: function(response){
+            show_error(response.responseJSON['message'])
+        }
+        
+    })
+}
+
+
 function reset(){
     $("#Username").val('')
     $("#email").val('')

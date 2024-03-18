@@ -1,11 +1,5 @@
-.main-body{
-    /* background: rgb(232,233,233);
-background: radial-gradient(circle, rgba(232,233,233,1) 0%, rgba(109,133,138,1) 0%, rgba(172,190,194,1) 0%); */
-}
-
-h1 { 
+h1 {
     text-align: center;
-    text-transform: capitalize;
 }
 h2 {
     margin: 0;
@@ -25,8 +19,8 @@ h2 {
 }
 .button {
     padding: 0.7rem 1.5rem;
-    border: 1px solid #4361ee;
-    background-color: #4361ee;
+    border: 1px solid #e6922e;
+    background-color: #e6922e;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -123,7 +117,7 @@ ul.form-stepper li a .form-stepper-circle {
     border-radius: 50%;
 }
 .form-stepper .form-stepper-active .form-stepper-circle {
-    background-color: #4361ee !important;
+    background-color: #e6922e !important;
     color: #fff;
 }
 .form-stepper .form-stepper-active .label {
@@ -160,9 +154,3 @@ ul.form-stepper li a .form-stepper-circle {
 .form-stepper a {
     cursor: default;
 }
-
-.form-control{
-    width: 45% !important;
-}
-
-  

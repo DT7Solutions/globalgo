@@ -28,6 +28,8 @@ urlpatterns = [
     path('staff_view/',student_view , name='staff_view'),
     path('usa_services/',usa_service_view , name='usa_services'),
     path('visito_visa_application/',visito_visa_application , name='visito_visa_application'),
+    path('update_profile_details/<int:user_id>/',update_profile_details, name="update_profile_details"),
+    path('updateprofile/',updateprofile, name="updateprofile"),
     
     
 

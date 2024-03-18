@@ -2825,3 +2825,17 @@ span.email-notes{
     text-align: left !important;
     text-transform: uppercase;
 }
+
+.apply-btn {
+    color: #fff !important;
+    text-transform: uppercase;
+    transition: all 0.4s ease 0s;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px 20px;
+    background: #E6922E;
+    display: inline-block;
+    border: 1px solid #f3f2f1;
+
+}

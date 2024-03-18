@@ -230,3 +230,17 @@ def visito_visa_application(request):
         return HttpResponse(html_template.render(context, request))
 
 
+@login_required
+def update_profile_details(request, user_id):
+    context = {}
+    try:
+        context['user'] = Users.objects.filter(id=user_id).first()
+        return render(request, 'uifiles/update_profile.html',context)
+    
+    except template.TemplateDoesNotExist:
+        html_template = loader.get_template('uifiles/page-404.html')
+        return HttpResponse(html_template.render(context, request))
+    except:
+        html_template = loader.get_template('uifiles/page-500.html')
+        return HttpResponse(html_template.render(context, request))
+

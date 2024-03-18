@@ -142,6 +142,46 @@ def staffRegister(request):
 
 
 @csrf_exempt
+def updateprofile(request):
+    if request.method == 'POST':
+        try:
+            userid = request.POST.get("userid")
+            user_name = request.POST.get("username")
+            phone = request.POST.get("phone")
+            user_email = request.POST.get("emailId")
+            firstname = request.POST.get("firstname")
+            lastname = request.POST.get("lastname")
+            referal_code = request.POST.get("referal_code")
+            dob = request.POST.get("dateofbirth")
+            addres = request.POST.get("address")
+            pincode = request.POST.get("pincode")
+            profile_img = request.FILES.get("image")
+           
+          
+            new_user =  Users.objects.filter(id=userid).first()
+            new_user.username=user_name
+            new_user.email=user_email
+            new_user.phone = phone
+            new_user.first_name = firstname
+            new_user.last_name = lastname
+            new_user.date_of_birth = dob
+            new_user.referal_code = referal_code
+            new_user.pincode = pincode
+            new_user.address = addres
+            new_user.profile_image = profile_img
+            new_user.save()
+
+            return JsonResponse({'message': 'Profile updated successfully.'})
+        except KeyError:
+            return JsonResponse({'message': 'Invalid request parameters.'}, status=400)
+        except Exception as e:
+            return JsonResponse({'message': str(e)}, status=500)
+    else:
+        return JsonResponse({'message': 'Method not allowed.'}, status=405)
+
+
+
+@csrf_exempt
 def verify_otp(request):
     try:
         post_data = request.POST
