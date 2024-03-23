@@ -49,9 +49,11 @@ JAZZMIN_SETTINGS = {
 
         # external url that opens in a new window (Permissions can be added)
         {"name": "Visite Site", "url": "/", "new_window": True},
+        {"name": "LogOut", "url": "/logout/"},
+        {"name": "PasswordChange", "url": "/admin/password_change/"},
 
         # model admin to link to (Permissions checked against model)
-        # {"model": "auth.User"},
+        {"model": "auth.User"},
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "books"},
@@ -117,7 +119,7 @@ JAZZMIN_SETTINGS = {
     # UI Tweaks #
     #############
     # Relative paths to custom CSS/JS scripts (must be present in static files)
-    "custom_css":"css/admin.css",
+    "custom_css":"assets1/css/admin.css",
     "custom_js": None,
     # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
     "use_google_fonts_cdn": True,

@@ -19,6 +19,7 @@
 .brand-text {
     display: none;
 }
-.jazzy-usermenu{
-    display: none !important;
+
+.dropdown-item  {
+    display: block;
 }

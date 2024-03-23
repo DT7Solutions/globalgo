@@ -8853,18 +8853,19 @@ header.fixedHeader.header04 {
   }
 }/*# sourceMappingURL=main.css.map */
 
-/* .login-section {
-  background-image: url('../images/bg/background.jpg');
+.login-section {
+  background-image: url('../images/bg/login-bg.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-} */
+}
 .login-card{
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
   border: none;
-  background-image: url('../images/bg/background.jpg');
+  /* background-image: url('../images/bg/background.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: cover; */
   
 }
+
