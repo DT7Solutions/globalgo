@@ -71,7 +71,7 @@
                                                         </a>
                                                     </li>
                                                     <!-- Step 5 (Visible when user role is not 'student') -->                                              
-                                                    {% if user.role|stringformat:'s' != 'student' %}
+                                                   
                                                     <li class="form-stepper-unfinished text-center form-stepper-list" step="5">
                                                         <a class="mx-2">
                                                             <span class="form-stepper-circle text-muted">
@@ -80,7 +80,7 @@
                                                             <div class="label text-muted">Visa Interview Questions</div>
                                                         </a>
                                                     </li>
-                                                    {% endif %}
+                                                    
                                                 </ul>
                                                 
                                         
@@ -249,15 +249,15 @@
                                                     </div>                                                   
                                                     <div class="mt-3">
                                                         <button class="button btn-navigate-form-step" type="button" step_number="3">Prev</button>
-                                                        {% if user.role|stringformat:'s' == 'student' %}
-                                                        <button class="button submit-btn" type="submit">Submit Application</button>
-                                                        {% else %}
+                                                       
+                                                        <button class="button submit-btn" type="submit"> question </button>
+                                                       
                                                         <button class="button btn-navigate-form-step" type="button" step_number="5">Next</button>
-                                                        {% endif %}
+                                                      
                                                     </div>
                                                     </section>
                                                       <!-- Step 5 -->
-                                                      {% if user.role|stringformat:'s' != 'student' %}
+                                                     
                                                         <section id="step-5" class="form-step d-none">
                                                         <h4 class="font-normal">Visa Interview Questions</h4>
                                                     
@@ -282,7 +282,7 @@
                                                             <button class="button submit-btn" type="submit">Submit Questions</button>
                                                         </div>
                                                         </section>
-                                                    {% endif %}
+                                                   
                                              
                                                 </form>
                                             </div>

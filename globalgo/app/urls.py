@@ -7,6 +7,7 @@ urlpatterns = [
     path('',signin),
     path('sigin/',login_logic, name="sigin"),
     path("logout/", logout_view, name="logout"),
+    path("admin/logout/", admin_logout, name='admin/logout'),
     path('check_authentication/',check_authentication,name='check_authentication'),
     path('signup/',signup, name="signup"),
     path('staffsignup/',staff_signup, name="staffsignup"),

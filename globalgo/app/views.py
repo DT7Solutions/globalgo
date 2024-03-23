@@ -29,6 +29,11 @@ def signin(request):
 def signup(request):
     return render(request, 'uifiles/signup.html')
 
+def admin_logout(request):
+    x= 'text'
+    logout(request)
+    return redirect('/') 
+
 @login_required
 def staff_signup(request):
     context ={}
@@ -154,10 +159,11 @@ def verify_email_link(request):
         post_data = request.POST
         get_email = post_data['email']
         get_user = Users.objects.filter(email=get_email) 
+        if not get_user:
+            return JsonResponse({'message': 'Your entered email is not found.'})
         if get_user is not None:
             userid = get_user[0].id
             encripted_token =  encrypt_user_id(userid)
-        
             context['reset_password_link'] = f'{settings.SERVER_URL}/reset_user_password/{encripted_token}/'
             context['user'] = Users.objects.get(id=get_user[0].id)
         

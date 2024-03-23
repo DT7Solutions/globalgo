@@ -28,14 +28,13 @@ def login_logic(request):
         try:
             email = request.POST.get("emailId")
             password = request.POST.get("password")
-            msg = None
             user = authenticate(email=email, password=password)
             if user is not None and user.is_active:
                 login(request, user)
                 if user:
                     if user.role.name == "admin":
                         print('admin')
-                        return JsonResponse({'redirect_url': '/admin_view/'})
+                        return JsonResponse({'redirect_url': '/admin/'})
                     
                     elif user.role.name == "staff":
                         print("staff")
