@@ -22,7 +22,14 @@ class AdminUserlist(admin.ModelAdmin):
 
 class AdminRole(admin.ModelAdmin):
     list_display=('id','name')
-    
+
+class AdminCountry(admin.ModelAdmin):
+    list_display=('id','countery_name')
+
+class AdminCountryTpes(admin.ModelAdmin):
+    list_display=('id','Country','Visa_Types','Description')
 
 admin.site.register(Users,AdminUserlist)
 admin.site.register(Role,AdminRole)
+admin.site.register(Country,AdminCountry)
+admin.site.register(VisaTypes,AdminCountryTpes)

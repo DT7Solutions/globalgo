@@ -74,12 +74,42 @@ class Users(AbstractBaseUser, PermissionsMixin):
         return True
 
 
-# class UserRole(models.Model):
-#     role = models.ForeignKey('Role', models.DO_NOTHING, null=False,blank=False,db_column='role_id')
-#     user = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,db_column='user_id')
-#     created_by = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,related_name='created_user',db_column='created_by')
-#     created_at = models.DateTimeField(auto_now_add=True)
+class Country(models.Model):
+    countery_name = models.CharField(max_length=100, blank=True, null=True)
+    country_logo = models.ImageField(upload_to='country_images/', blank=True, null=True)
+    image = models.ImageField(upload_to='country_images/', blank=True, null=True)
+    Description = models.TextField(blank=True, null=True)
+    user = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,db_column='user_id')
+    created_by = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,related_name='created_country',db_column='created_by')
+    created_at = models.DateTimeField(auto_now_add=True)
     
-#     class Meta:
-#         managed = True
-#         db_table = 'user_role'
+    class Meta:
+        managed = True
+        db_table = 'country_list'
+
+
+Visa_Types = (
+        ('visit visa', 'visit visa'),
+        ('Tourist Visa', 'Tourist Visa'),
+        ('Study Visa', 'Study Visa'),
+        ('Medical Visa', 'Medical Visa'),
+        ('Migration Visa', 'Migration Visa'),
+        ('Family Visa', 'Family Visa'),
+        ('Diplomatic Visa', 'Diplomatic Visa'),
+        ('Working Visa', 'Working Visa'),
+        ('Business Visa', 'Business Visa'),
+
+    )
+class VisaTypes(models.Model):
+    Country = models.ForeignKey('Country', models.DO_NOTHING, null=False,blank=False,db_column='Country_id')
+    country_logo = models.ImageField(upload_to='country_images/', blank=True, null=True)
+    Visa_Types = models.CharField(choices=Visa_Types,max_length=100,null=True,blank=True,default='visit visa')
+    Description = models.TextField(blank=True, null=True)
+    created_by = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,related_name='created_country_type',db_column='created_by')
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        managed = True
+        db_table = 'visa_types_list'
+    def __str__(self):
+        return self.Country.countery_name

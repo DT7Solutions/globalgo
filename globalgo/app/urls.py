@@ -27,10 +27,12 @@ urlpatterns = [
     path('admin_view/',adminView, name="admin_view"),
     path('student_view/',student_view , name='student_view'),
     path('staff_view/',student_view , name='staff_view'),
-    path('usa_services/',usa_service_view , name='usa_services'),
+    path('countery_services/<str:countery_name>/',countery_service_view , name='countery_services'),
     path('visito_visa_application/',visito_visa_application , name='visito_visa_application'),
     path('update_profile_details/<int:user_id>/',update_profile_details, name="update_profile_details"),
     path('updateprofile/',updateprofile, name="updateprofile"),
+    path('visa_application_list/',visa_application_list, name="visa_application_list"),
+    
     
     
 

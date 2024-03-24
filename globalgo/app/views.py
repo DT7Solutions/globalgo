@@ -197,6 +197,8 @@ def resert_change_password(request,token):
 def student_view(request):
     context = {}
     try:
+        country_list = Country.objects.all()
+        context['country'] = country_list 
         return render(request, 'uifiles/student_view.html',context)
     
     except template.TemplateDoesNotExist:
@@ -209,10 +211,12 @@ def student_view(request):
 
 @login_required
 @csrf_exempt    
-def usa_service_view(request):
+def countery_service_view(request,countery_name):
     context = {}
     try:
-        return render(request, 'uifiles/usa_service.html',context)
+        visa_list = VisaTypes.objects.filter(Country__countery_name=countery_name)
+        context['visa_type'] = visa_list 
+        return render(request, 'uifiles/visa_service.html',context)
     
     except template.TemplateDoesNotExist:
         html_template = loader.get_template('uifiles/page-404.html')
@@ -250,3 +254,16 @@ def update_profile_details(request, user_id):
         html_template = loader.get_template('uifiles/page-500.html')
         return HttpResponse(html_template.render(context, request))
 
+# @login_required
+def visa_application_list(request):
+    context = {}
+    try:
+        # context['user'] = Users.objects.all()
+        return render(request, 'uifiles/application_list.html',context)
+    
+    except template.TemplateDoesNotExist:
+        html_template = loader.get_template('uifiles/page-404.html')
+        return HttpResponse(html_template.render(context, request))
+    except:
+        html_template = loader.get_template('uifiles/page-500.html')
+        return HttpResponse(html_template.render(context, request))

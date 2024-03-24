@@ -10,121 +10,22 @@
             </div>
         </div>
         <div class="row">
+            {% for item in country%}
             <!-- Country Item -->
             <div class="col-lg-3 col-sm-6">
                 <div class="countryItem02 ciItem02 text-center">
                     <div class="countryThumb">
-                        <img src="{% static 'assets/images/country/1.jpg' %}" alt="ImmiPress">
-                        <div class="cnFlag"><img src="{% static 'assets/images/country/f1.png" alt="ImmiPress"></div>
+                        <img src="{{item.image.url}}" alt="ImmiPress">
+                        <div class="cnFlag"><img src="{{item.country_logo.url}}" alt="ImmiPress"></div>
                     </div>
                     <div class="countryContent">
-                        <h3><a href="single-country.html">Australia</a></h3>
-                        <p>We will help you in every step of the Visa application process.</p>
+                        <h3><a href="/countery_services/{{item.countery_name}}/">{{item.countery_name}}</a></h3>
+                        <p>{{item.Description}}</p>
                     </div>
-                    <div class="price-btn blue">
-                        <a class="blue" href="/usa_services/">View More</a>
-                    </div>
+                    <a class="immiPressBtn" href="/countery_services/{{item.countery_name}}/"><span>View More</span></a>
                 </div>
             </div>
-            <!-- Country Item -->
-            <!-- Country Item -->
-            <div class="col-lg-3 col-sm-6">
-                <div class="countryItem02 ciItem02 text-center">
-                    <div class="countryThumb">
-                        <img src="{% static 'assets/images/country/2.jpg' %}" alt="ImmiPress">
-                        <div class="cnFlag"><img src="{% static 'assets/images/country/f2.png" alt="ImmiPress"></div>
-                    </div>
-                    <div class="countryContent">
-                        <h3><a href="single-country.html">Germany</a></h3>
-                        <p>We will help you in every step of the Visa application process.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Country Item -->
-            <!-- Country Item -->
-            <div class="col-lg-3 col-sm-6">
-                <div class="countryItem02 ciItem02 text-center">
-                    <div class="countryThumb">
-                        <img src="{% static 'assets/images/country/3.jpg' %}" alt="ImmiPress">
-                        <div class="cnFlag"><img src="{% static 'assets/images/country/f3.png" alt="ImmiPress"></div>
-                    </div>
-                    <div class="countryContent">
-                        <h3><a href="single-country.html">England</a></h3>
-                        <p>We will help you in every step of the Visa application process.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Country Item -->
-            <!-- Country Item -->
-            <div class="col-lg-3 col-sm-6">
-                <div class="countryItem02 ciItem02 text-center">
-                    <div class="countryThumb">
-                        <img src="{% static 'assets/images/country/4.jpg' %}" alt="ImmiPress">
-                        <div class="cnFlag"><img src="{% static 'assets/images/country/f4.png" alt="ImmiPress"></div>
-                    </div>
-                    <div class="countryContent">
-                        <h3><a href="single-country.html">Canada</a></h3>
-                        <p>We will help you in every step of the Visa application process.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Country Item -->
-            <!-- Country Item -->
-            <div class="col-lg-3 col-sm-6">
-                <div class="countryItem02 ciItem02 text-center">
-                    <div class="countryThumb">
-                        <img src="{% static 'assets/images/country/5.jpg' %}" alt="ImmiPress">
-                        <div class="cnFlag"><img src="{% static 'assets/images/country/f5.png" alt="ImmiPress"></div>
-                    </div>
-                    <div class="countryContent">
-                        <h3><a href="single-country.html">France</a></h3>
-                        <p>We will help you in every step of the Visa application process.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Country Item -->
-            <!-- Country Item -->
-            <div class="col-lg-3 col-sm-6">
-                <div class="countryItem02 ciItem02 text-center">
-                    <div class="countryThumb">
-                        <img src="{% static 'assets/images/country/6.jpg' %}" alt="ImmiPress">
-                        <div class="cnFlag"><img src="{% static 'assets/images/country/f6.png" alt="ImmiPress"></div>
-                    </div>
-                    <div class="countryContent">
-                        <h3><a href="single-country.html">Dubai</a></h3>
-                        <p>We will help you in every step of the Visa application process.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Country Item -->
-            <!-- Country Item -->
-            <div class="col-lg-3 col-sm-6">
-                <div class="countryItem02 ciItem02 text-center">
-                    <div class="countryThumb">
-                        <img src="{% static 'assets/images/country/7.jpg' %}" alt="ImmiPress">
-                        <div class="cnFlag"><img src="{% static 'assets/images/country/f7.png" alt="ImmiPress"></div>
-                    </div>
-                    <div class="countryContent">
-                        <h3><a href="single-country.html">Turkey</a></h3>
-                        <p>We will help you in every step of the Visa application process.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Country Item -->
-            <!-- Country Item -->
-            <div class="col-lg-3 col-sm-6">
-                <div class="countryItem02 ciItem02 text-center">
-                    <div class="countryThumb">
-                        <img src="{% static 'assets/images/country/8.jpg' %}" alt="ImmiPress">
-                        <div class="cnFlag"><img src="{% static 'assets/images/country/f8.png" alt="ImmiPress"></div>
-                    </div>
-                    <div class="countryContent">
-                        <h3><a href="single-country.html">India</a></h3>
-                        <p>We will help you in every step of the Visa application process.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Country Item -->
+            {% endfor %}
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
