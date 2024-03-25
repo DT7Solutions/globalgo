@@ -307,5 +307,10 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
 
 
 $(document).ready(function() {
-    $('#example').DataTable();
+    $('#visa-applications-table').DataTable({
+        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+        
+    }
+    );
+    
 });
