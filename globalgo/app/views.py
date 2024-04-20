@@ -227,10 +227,12 @@ def countery_service_view(request,countery_name):
 
 @login_required
 @csrf_exempt        
-def visito_visa_application(request):
+def visa_application(request,userid):
     context = {}
     try:
-        return render(request, 'uifiles/visitor_visa_application.html',context)
+        save_user = Users.objects.filter(id=userid).first()
+        context['customer'] = save_user 
+        return render(request, 'uifiles/visa_application.html',context)
     
     except template.TemplateDoesNotExist:
         html_template = loader.get_template('uifiles/page-404.html')

@@ -113,3 +113,79 @@ class VisaTypes(models.Model):
         db_table = 'visa_types_list'
     def __str__(self):
         return self.Country.countery_name
+
+
+# class DependentDetails(models.Model):
+#     Dependent_first_name = models.CharField(max_length=100, blank=True, null=True)
+#     Dependent_last_name = models.CharField(max_length=100, blank=True, null=True)
+#     Dependent_email = models.EmailField()
+#     dDependent_phone = models.CharField(max_length=20, blank=True, null=True)
+#     Dependent_PhoneNumber_two = models.CharField(max_length=13, blank=True, null=True)
+#     UploadPassport_front = models.ImageField(upload_to='visaapplication/', blank=True, null=True)
+#     UploadPassport_back = models.ImageField(upload_to='visaapplication/', blank=True, null=True)
+#     Aadhar_front = models.ImageField(upload_to='visaapplication/', blank=True, null=True)
+#     Aadhar_back = models.ImageField(upload_to='visaapplication/', blank=True, null=True)
+#     user = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,db_column='user-dependent_id')
+#     application_user = models.ForeignKey('VisaApplication', models.DO_NOTHING, null=False,blank=False,db_column='VisaApplication_id')
+#     class Meta:
+#         managed = True
+#         db_table = 'dependent_list'
+
+# class PointOfContact(models.Model):
+#     first_name = models.CharField(max_length=100, blank=True, null=True)
+#     last_name = models.CharField(max_length=100, blank=True, null=True)
+#     email = models.EmailField()
+#     phone = models.CharField(max_length=20,blank=True, null=True)
+#     address_line1 = models.CharField(max_length=255,blank=True, null=True)
+#     address_line2 = models.CharField(max_length=255,blank=True, null=True)
+#     city =  models.CharField(max_length=100,blank=True, null=True)
+#     state =  models.CharField(max_length=100,blank=True, null=True)
+#     zipcode =  models.CharField(max_length=100,blank=True, null=True)
+#     user = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,db_column='point_of_contact_user_id')
+#     application_user = models.ForeignKey('VisaApplication', models.DO_NOTHING, null=False,blank=False,db_column='visaApplication_id')
+#     class Meta:
+#         managed = True
+#         db_table = 'poin_of_contact'
+
+# class SecurityQuestion(models.Model):
+#     username = models.CharField(max_length=100, blank=True, null=True)
+#     password = models.CharField(max_length=100, blank=True, null=True)
+#     questio1 = models.CharField(max_length=255)
+#     answer1 = models.CharField(max_length=255)
+#     questio2 = models.CharField(max_length=255)
+#     answer2 = models.CharField(max_length=255)
+#     questio3 = models.CharField(max_length=255)
+#     answer3 = models.CharField(max_length=255)
+#     user = models.ForeignKey('VisaApplication', models.DO_NOTHING, null=False,blank=False,db_column='visaApplication_id')
+    
+#     class Meta:
+#         managed = True
+#         db_table = 'security_question'
+
+
+# class VisaApplication(models.Model):
+#     ApplicationNo = models.IntegerField()
+#     PhoneNumber_two = models.CharField(max_length=13, blank=True, null=True)
+#     UploadPassport_front = models.ImageField(upload_to='visaapplication/', blank=True, null=True)
+#     UploadPassport_back = models.ImageField(upload_to='visaapplication/', blank=True, null=True)
+#     Aadhar_front = models.ImageField(upload_to='visaapplication/', blank=True, null=True)
+#     Aadhar_back = models.ImageField(upload_to='visaapplication/', blank=True, null=True)
+#     PointOfContact_email = models.EmailField()
+#     PointOfContact_phone = models.CharField(blank=True, null=True,max_length=20)
+#     PointOfContact_address = models.TextField(blank=True, null=True,max_length=255)
+    
+    
+
+
+#     image = models.ImageField(upload_to='country_images/', blank=True, null=True)
+#     countery_name = models.CharField(max_length=100, blank=True, null=True)
+#     country_logo = models.ImageField(upload_to='country_images/', blank=True, null=True)
+#     image = models.ImageField(upload_to='country_images/', blank=True, null=True)
+#     Description = models.TextField(blank=True, null=True)
+#     user = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,db_column='user_id')
+#     created_by = models.ForeignKey('Users', models.DO_NOTHING, null=False,blank=False,related_name='created_country',db_column='created_by')
+#     created_at = models.DateTimeField(auto_now_add=True)
+    
+#     class Meta:
+#         managed = True
+#         db_table = 'country_list'

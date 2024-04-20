@@ -54,7 +54,7 @@ def login_logic(request):
 
 
 
-
+@login_required
 @csrf_exempt
 def UserRegister(request):
     if request.method == 'POST':
@@ -81,14 +81,16 @@ def UserRegister(request):
             new_user.phone = phone
             new_user.profile_image = 'profile_images/default_profile.png'
             new_user.created_at = datetime.now()
+            new_user.referal_code = request.user.referal_code
             new_user.is_active = True
             new_user.is_staff = True
             new_user.is_superuser = False
             new_user.role = roledata[2]
             new_user.save()
-        
+            save_User_data = Users.objects.filter(username=user_name,email=user_email,phone=phone)
+            user_id = save_User_data[0].id
             
-            return JsonResponse({'message': 'User registered successfully.'})
+            return JsonResponse({'message': 'User registered successfully.','user_id':user_id})
         except KeyError:
             return JsonResponse({'message': 'Invalid request parameters.'}, status=400)
         except Exception as e:
@@ -113,7 +115,7 @@ def staffRegister(request):
             if Users.objects.filter(username=user_name).exists():
                 return JsonResponse({'message': 'Username already exists.'}, status=400)
             
-            if Users.objects.filter(email=user_email).exists():
+            if Users.objects.filter(email=user_email,).exists():
                 return JsonResponse({'message': 'Email already exists.'}, status=400)
             roledata = Role.objects.all()
             new_user = Users()

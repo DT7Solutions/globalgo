@@ -29,8 +29,8 @@ function creatuser(){
         processData: false,
         contentType: false,
         success: function(response){
-            // show_success(response['message'])
-            window.location.href = '/student_view/';
+            userid = response['user_id']
+            window.location.href = '/visa_application/' + userid + '/';
             reset()
         },
         error: function(response){

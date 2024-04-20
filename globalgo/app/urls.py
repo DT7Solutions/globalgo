@@ -4,8 +4,8 @@ from .views import *
 from .controler_logic import *
 
 urlpatterns = [
-    path('',signin),
-    path('home/',home, name="home"),
+    path('login',signin),
+    path('',home, name="home"),
     path('about/',about, name="about"),
     path('contactus/',contactus, name="contactus"),
     path('sigin/',login_logic, name="sigin"),
@@ -31,7 +31,7 @@ urlpatterns = [
     path('student_view/',student_view , name='student_view'),
     path('staff_view/',student_view , name='staff_view'),
     path('countery_services/<str:countery_name>/',countery_service_view , name='countery_services'),
-    path('visito_visa_application/',visito_visa_application , name='visito_visa_application'),
+    path('visa_application/<int:userid>/',visa_application , name='visa_application'),
     path('update_profile_details/<int:user_id>/',update_profile_details, name="update_profile_details"),
     path('updateprofile/',updateprofile, name="updateprofile"),
     path('visa_application_list/',visa_application_list, name="visa_application_list"),
