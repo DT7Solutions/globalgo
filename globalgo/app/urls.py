@@ -5,6 +5,9 @@ from .controler_logic import *
 
 urlpatterns = [
     path('',signin),
+    path('home/',home, name="home"),
+    path('about/',about, name="about"),
+    path('contactus/',contactus, name="contactus"),
     path('sigin/',login_logic, name="sigin"),
     path("logout/", logout_view, name="logout"),
     path("admin/logout/", admin_logout, name='admin/logout'),

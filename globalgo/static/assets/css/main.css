@@ -2506,18 +2506,18 @@ header.fixedHeader {
 }
 
 /*-- Gmaps --*/
-.gmaps {
+/* .gmaps {
   position: relative;
-}
+} */
 .gmaps iframe {
-  position: relative;
+ 
   overflow: hidden;
   width: 100%;
   height: 524px;
   line-height: 0.8;
   border: none;
 }
-.gmaps::after {
+/* .gmaps::after {
   position: absolute;
   left: 0;
   top: 0;
@@ -2525,7 +2525,7 @@ header.fixedHeader {
   height: 100%;
   content: "";
   background: rgba(0, 0, 0, 0.3);
-}
+} */
 
 /*-- Coaching Item --*/
 .animImage {
