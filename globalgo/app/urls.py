@@ -4,7 +4,7 @@ from .views import *
 from .controler_logic import *
 
 urlpatterns = [
-    path('login',signin),
+    path('login/',signin),
     path('',home, name="home"),
     path('about/',about, name="about"),
     path('contactus/',contactus, name="contactus"),

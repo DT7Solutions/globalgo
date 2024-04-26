@@ -15,6 +15,16 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 
+
+def home(request):     
+    return render(request, 'uifiles/live.html')
+
+def contactus(request):     
+    return render(request, 'uifiles/contact.html')
+def about(request):     
+    return render(request, 'uifiles/about.html')
+
+
 def signin(request):
     context ={}
     try:
@@ -256,11 +266,12 @@ def update_profile_details(request, user_id):
         html_template = loader.get_template('uifiles/page-500.html')
         return HttpResponse(html_template.render(context, request))
 
-# @login_required
+@login_required
 def visa_application_list(request):
     context = {}
     try:
-        # context['user'] = Users.objects.all()
+
+        context['user'] = Users.objects.all()
         return render(request, 'uifiles/application_list.html',context)
     
     except template.TemplateDoesNotExist:
@@ -269,10 +280,5 @@ def visa_application_list(request):
     except:
         html_template = loader.get_template('uifiles/page-500.html')
         return HttpResponse(html_template.render(context, request))
-def home(request):     
-    return render(request, 'uifiles/live.html')
+    
 
-def contactus(request):     
-    return render(request, 'uifiles/contact.html')
-def about(request):     
-    return render(request, 'uifiles/about.html')
