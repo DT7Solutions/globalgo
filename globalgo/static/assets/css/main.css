@@ -8879,3 +8879,16 @@ a{
 #visa-applications-table{
   border: 1px solid rgb(211, 210, 210);
 }
+.algh{
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center!important;
+}
+.serviceItem02 .serviceWrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border-radius: 5px;
+  padding: 43px 0 0;
+
+}

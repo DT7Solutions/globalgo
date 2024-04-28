@@ -20,7 +20,7 @@ def home(request):
     return render(request, 'uifiles/live.html')
 
 def contactus(request):     
-    return render(request, 'uifiles/contact.html')
+    return render(request, 'uifiles/contactus.html')
 def about(request):     
     return render(request, 'uifiles/about.html')
 
