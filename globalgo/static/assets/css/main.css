@@ -8892,3 +8892,9 @@ a{
   padding: 43px 0 0;
 
 }
+.aboutWidget,.serviceMenu {
+  border-right: none!important;
+}
+.galleryWidget {
+  border-left: none!important;
+}
